@@ -1,7 +1,7 @@
 from pydantic import BaseModel,EmailStr
 
 
-class TokenResponse(BaseModel):
+class TokenRequest(BaseModel):
     name:str
     email:EmailStr
     
