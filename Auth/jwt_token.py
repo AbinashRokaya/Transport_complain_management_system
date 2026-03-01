@@ -11,7 +11,8 @@ ALGORITHM=os.getenv("ALGORITHM")
 def create_access_token(request:TokenRequest,expires_delta:timedelta |None=None):
     to_encode={
     "name":request.name,
-    "email":request.email
+    "email":request.email,
+    "role":request.role
     }
     if expires_delta:
         expire=datetime.now(timezone.utc)+expires_delta

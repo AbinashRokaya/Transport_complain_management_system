@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from Database.database import engine,Base
-from Route import register_route,login_route
+from Route import register_route,login_route,complain_route
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 origins = [
@@ -29,6 +30,7 @@ async def root():
 
 app.include_router(register_route.route)
 app.include_router(login_route.route)
+app.include_router(complain_route.route)
 
 
 
