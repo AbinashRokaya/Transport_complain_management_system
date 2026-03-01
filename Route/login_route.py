@@ -24,7 +24,8 @@ def login_user(user:LoginRequest,db:db_dependancy,response:Response):
             raise HTTPException(status_code=400,detail="password is incorrect")
         token=TokenRequest(
             name=exist_user.name,
-            email=exist_user.email
+            email=exist_user.email,
+            role=exist_user.role
         )
 
         access_token=create_access_token(token)
@@ -40,7 +41,8 @@ def login_user(user:LoginRequest,db:db_dependancy,response:Response):
         user_detail={
             "name":exist_user.name,
             "email":exist_user.email,
-            "address":exist_user.address
+            "address":exist_user.address,
+            "role":exist_user.role
         }
 
         return {"msg":"login sucessfully","access_token":access_token,"user_detail":user_detail}
