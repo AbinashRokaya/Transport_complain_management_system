@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from Database.database import engine,Base
-from Route import register_route,login_route,complain_route
+from Route import register_route,login_route,complain_route,admin_route
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -31,6 +31,7 @@ async def root():
 app.include_router(register_route.route)
 app.include_router(login_route.route)
 app.include_router(complain_route.route)
+app.include_router(admin_route.route)
 
 
 
