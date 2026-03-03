@@ -6,9 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None)
 origins = [
     "http://localhost:5173",
+    "https://complain-mangement-frontend.vercel.app"
    
    
 ]
@@ -36,6 +37,6 @@ app.include_router(department_route.route)
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True, loop="asyncio", )
+     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
 
 

@@ -34,8 +34,8 @@ def login_user(user:LoginRequest,db:db_dependancy,response:Response):
     value=access_token,
     httponly=True,
     max_age=3600,
-    samesite="lax",   # ← change from "lax" to "none"
-    secure=False,       # ← must be True when samesite="none" in production
+    samesite="none",   # ← change from "lax" to "none"
+    secure=True,       # ← must be True when samesite="none" in production
     path="/",
 )
         user_detail={
