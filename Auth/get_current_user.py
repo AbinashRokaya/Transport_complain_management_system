@@ -1,20 +1,23 @@
 from typing import Annotated
 import jwt
 import os
+from Auth.jwt_token import SECRET_KEY,ALGORITHM
 from fastapi import HTTPException,Depends,Cookie
 from Schema.role_schema import Permission_ROLE
 from Schema.role_schema import Role_Schema,Action
 
-SECRET_KEY=os.getenv("SECRET_KEY")
-ALGORITHM=os.getenv("ALGORITHM")
-
 
 def get_current_user(access_token:Annotated[str|None,Cookie()]=None):
+   
+   
+    print("abinash")
+    print(access_token)
     if access_token is None:
         raise HTTPException(status_code=401,detail="Not authenticated")
     
     try:
         payload = jwt.decode(access_token, SECRET_KEY, algorithms=[ALGORITHM])
+        print(payload)
         username = payload.get("sub")
         role = payload.get("role")
 

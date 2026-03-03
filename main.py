@@ -1,16 +1,16 @@
 from fastapi import FastAPI
 from Database.database import engine,Base
-from Route import register_route,login_route,complain_route
+from Route import register_route,login_route,complain_route,department_route
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
-
+from dotenv import load_dotenv
+load_dotenv()
 
 app = FastAPI()
 origins = [
     "http://localhost:5173",
-    "http://127.0.0.1:5501",
-    "http://localhost:5501",
-    "https://your-frontend.onrender.com",  # add this
+   
+   
 ]
 
 Base.metadata.create_all(bind=engine)
@@ -31,6 +31,7 @@ async def root():
 app.include_router(register_route.route)
 app.include_router(login_route.route)
 app.include_router(complain_route.route)
+app.include_router(department_route.route)
 
 
 

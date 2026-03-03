@@ -28,16 +28,16 @@ def login_user(user:LoginRequest,db:db_dependancy,response:Response):
             role=exist_user.role
         )
 
-        access_token=create_access_token(token)
+        access_token=create_access_token(subject=exist_user.name,role=exist_user.role)
         response.set_cookie(
-            key="access_token", 
-                value=access_token, 
-                httponly=True,   
-                max_age=3600,    
-                samesite="none",   # change from "lax" to "none" for cross-origin
-                secure=True,       # Keep false for HTTP local dev
-                path="/",       
-        )
+    key="access_token",
+    value=access_token,
+    httponly=True,
+    max_age=3600,
+    samesite="lax",   # ← change from "lax" to "none"
+    secure=False,       # ← must be True when samesite="none" in production
+    path="/",
+)
         user_detail={
             "name":exist_user.name,
             "email":exist_user.email,
