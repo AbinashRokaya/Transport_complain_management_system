@@ -4,12 +4,14 @@ from Enum.complaint_type import ComplainTypes_Enum
 from Enum.category_enum import Category_Enum
 from Enum.status_enum import Status_Enum
 from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
 
 class ComplainModel(Base):
     __tablename__="complain"
 
     complain_id=Column(Integer,primary_key=True,index=True)
     user_id=Column(Integer,ForeignKey("user.id",ondelete="CASCADE"),nullable=False)
+    department = Column(String,nullable=False)
     complain_type=Column(Enum(ComplainTypes_Enum),nullable=False)
     category=Column(Enum(Category_Enum),default=Category_Enum.Minor,nullable=False)
     description=Column(String,nullable=False)
@@ -19,3 +21,7 @@ class ComplainModel(Base):
     update_at=Column(DateTime,server_default=func.now(),onupdate=func.now())
     created_at=Column(DateTime,server_default=func.now())
 
+    user = relationship("RegisterModel", back_populates="complaints")
+
+
+   

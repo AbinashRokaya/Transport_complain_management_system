@@ -6,3 +6,15 @@ class ComplainTypes_Enum(str,Enum):
     Public_Transport="Public Transport",
     Parking_Issue="Parking Issue",
     Noise_Pollution="Noise Pollution",
+
+
+ROAD_TYPES = [
+    "Road Damage",
+    "Noise Pollution"
+]
+
+TRANSPORT_TYPES = [
+    "Traffic Violation",
+    "Public Transport",
+    "Parking Issue"
+]
