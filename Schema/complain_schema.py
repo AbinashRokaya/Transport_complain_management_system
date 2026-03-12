@@ -11,6 +11,9 @@ class ComplainRequest(BaseModel):
     category:Category_Enum=Category_Enum.Minor
     description:str=None
     location:str=None
+    spefice_location:str=None
+    cordinate_location:List[float]=None
+    image_url:List[str]=None
 
 class StatusUpdate(BaseModel):
     status: str
@@ -19,6 +22,9 @@ class ComplainResponse(BaseModel):
     complain_id:int=None
     complain_type:ComplainTypes_Enum=None
     department:str=None
+    spefice_location:str=None
+    cordinate_location:List[float]=None
+    image_url:List[str]=None
 
     status:Status_Enum=Status_Enum.Pending
     category:Category_Enum=Category_Enum.Minor
@@ -34,3 +40,11 @@ class ComplainResponse(BaseModel):
 
 class ComplainListResponse(BaseModel):
     complains:List[ComplainResponse]
+class cordinateResponse(BaseModel):
+    spefice_location:str=None
+    cordinate_location:List[float]=None
+    description:str=None
+    user_name:str=None
+    category:Category_Enum=None
+class CordinateListResponse(BaseModel):
+    cordinate:List[cordinateResponse]

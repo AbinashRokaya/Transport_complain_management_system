@@ -6,7 +6,7 @@ from enum import Enum
 class Role_Schema(str,Enum):
     User="user"
     Admin="admin"
-    SuperAdmin="superAdmin"
+    SuperAdmin = "superAdmin"
 
 
 Permission_ROLE = {

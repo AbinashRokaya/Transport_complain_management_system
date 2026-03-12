@@ -21,6 +21,7 @@ def register_user(user:RegisterRequest,db:db_dependancy):
         hash_pasword=hash_password_user(user.password)
 
         new_user=RegisterModel(
+            number=user.number,
             name=user.name,
             address=user.address,
             email=user.email,

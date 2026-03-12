@@ -4,9 +4,9 @@ import os
 from Schema.token_schema import TokenRequest
 from datetime import timedelta,datetime,timezone
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
+SECRET_KEY = "c5b565981ec34e5b1192662a9d43c63dee6eef672712269ee459d3dc6a473972"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 def create_access_token(subject: str,role: str,expires_delta:timedelta |None=None):
     to_encode={

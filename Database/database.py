@@ -6,7 +6,7 @@ from fastapi import Depends
 import os
 
 # DATABASE_URL="postgresql://postgres:abinash@localhost:5432/transport"
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "postgresql://postgres:abinash@localhost:5432/transport"
 engine=create_engine(DATABASE_URL)
 sessionLocal=sessionmaker(bind=engine,autoflush=False,autocommit=False)
 Base=declarative_base()

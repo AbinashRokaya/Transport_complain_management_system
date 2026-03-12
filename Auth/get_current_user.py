@@ -23,7 +23,7 @@ def get_current_user(access_token:Annotated[str|None,Cookie()]=None):
 
         if username is None or role is None:
             raise HTTPException(status_code=401, detail="Invalid token")
-        role_enum = Role_Schema(role.lower()) 
+        role_enum = Role_Schema(role) 
 
         return {
             "username": username,

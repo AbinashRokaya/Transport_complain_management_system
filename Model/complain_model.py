@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Enum, ForeignKey,DateTime
+from sqlalchemy import Column, Integer, String, Enum, ForeignKey,DateTime,Float
+from sqlalchemy.dialects.postgresql import ARRAY
 from Database.database import Base
 from Enum.complaint_type import ComplainTypes_Enum
 from Enum.category_enum import Category_Enum
@@ -16,7 +17,10 @@ class ComplainModel(Base):
     category=Column(Enum(Category_Enum),default=Category_Enum.Minor,nullable=False)
     description=Column(String,nullable=False)
     location=Column(String,nullable=False)
+    spefice_location=Column(String,nullable=False)
+    cordinate_location=Column(ARRAY(Float),nullable=False)
     status=Column(Enum(Status_Enum),default=Status_Enum.Pending,nullable=False)
+    image_url=Column(ARRAY(String),nullable=False, default=[])
 
     update_at=Column(DateTime,server_default=func.now(),onupdate=func.now())
     created_at=Column(DateTime,server_default=func.now())

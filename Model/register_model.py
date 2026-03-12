@@ -8,6 +8,7 @@ class RegisterModel(Base):
     __tablename__="user"
 
     id=Column(Integer,primary_key=True,index=True)
+    number=Column(String,nullable=False)
     name=Column(String,nullable=False)
     address=Column(String,nullable=False)
     email=Column(String,nullable=False,unique=True)
